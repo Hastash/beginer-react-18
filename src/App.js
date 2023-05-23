@@ -18,13 +18,18 @@ const App = () => {
       alert('Input is empty!')
       return;
     }
-    let newTodo = {id:"abc", title: address};
+    let newTodo = {id:"abc", title: address, type:'Nathan'};
     //hook not merge state
     setTodos([...todos, newTodo]);
     setAddress('');
   }
   const handleOnchangeInput= (e) => {
     setAddress(e.target.value);
+  }
+  const deleteDataTodo = (id) => {
+    let curTodos = todos;
+    curTodos = curTodos.filter(item => item.id!==id)
+    setTodos(curTodos)
   }
   return (
     <div className="App">
@@ -35,10 +40,12 @@ const App = () => {
         <Todo
           data={todos}
           title={`All todos`}
+          deleteDataTodo={deleteDataTodo}
         />
         <Todo
-          data={todos.filter(item => item.type == 'Nathan')}
+          data={todos.filter(item => item.type === 'Nathan')}
           title={`Nathan's todos`}
+          deleteDataTodo={deleteDataTodo}
         />
         <input type="text" value={address} onChange={(e)=>handleOnchangeInput(e)}/>
         <button type="button" onClick={(e)=>handleEventClick(e)}>Click Me</button>
