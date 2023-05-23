@@ -1,8 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import Nav from './views/Nav';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Todo from './views/Todo';
+import Covid from './views/Covid';
 const App = () => {
   let [name, setName] = useState('Nathan');
   const [address, setAddress]=useState('');
@@ -13,6 +14,15 @@ const App = () => {
   {id: 'Todo4', title:"Learning English", type:'Hannah'}
 
   ]);
+  // run after ui is re-rendered
+  useEffect(()=>{
+    console.log('run useEffect')
+  },[address])
+  // Chỉ khi nào Address thay đổi mới thực thi lệnh trong useEffect
+  useEffect(()=>{
+    console.log('run useEffect todos')
+  },[todos])
+
   const handleEventClick =(e) => {
     if(!address){
       alert('Input is empty!')
@@ -37,18 +47,7 @@ const App = () => {
       <Nav />
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Hello {name}</h1>
-        <Todo
-          data={todos}
-          title={`All todos`}
-          deleteDataTodo={deleteDataTodo}
-        />
-        <Todo
-          data={todos.filter(item => item.type === 'Nathan')}
-          title={`Nathan's todos`}
-          deleteDataTodo={deleteDataTodo}
-        />
-        <input type="text" value={address} onChange={(e)=>handleOnchangeInput(e)}/>
-        <button type="button" onClick={(e)=>handleEventClick(e)}>Click Me</button>
+      <Covid />
       </header>
     </div>
   );
