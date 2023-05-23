@@ -7,17 +7,17 @@ const App = () => {
   let [name, setName] = useState('Nathan');
   const [address, setAddress]=useState('');
   const [todos, setTodos]= useState([ 
-  {id: 'Todo1', title:"Doing homework"},
-  {id: 'Todo2', title:"Testing Polistic"},
-  {id: 'Todo3', title:"Watching youtube"}
+  {id: 'Todo1', title:"Doing homework", type:'Nathan'},
+  {id: 'Todo2', title:"Testing Polistic", type:'Nathan'},
+  {id: 'Todo3', title:"Watching youtube", type:'Hannah'},
+  {id: 'Todo4', title:"Learning English", type:'Hannah'}
+
   ]);
   const handleEventClick =(e) => {
     if(!address){
       alert('Input is empty!')
       return;
     }
-    // console.log('>>>Check Address: ',address);
-    // setName(address);
     let newTodo = {id:"abc", title: address};
     //hook not merge state
     setTodos([...todos, newTodo]);
@@ -28,13 +28,17 @@ const App = () => {
   }
   return (
     <div className="App">
-      <Nav />
       <header className="App-header">
+      <Nav />
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Hello {name}</h1>
         <Todo
           data={todos}
-          title={'All todos'}
+          title={`All todos`}
+        />
+        <Todo
+          data={todos.filter(item => item.type == 'Nathan')}
+          title={`Nathan's todos`}
         />
         <input type="text" value={address} onChange={(e)=>handleOnchangeInput(e)}/>
         <button type="button" onClick={(e)=>handleEventClick(e)}>Click Me</button>

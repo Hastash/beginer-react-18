@@ -5,15 +5,19 @@ const Todo = (props) => {
     const todos = props.data;
     return(
     <div className='todo-container'>
+        <div className="title">
+            {props.title}
+        </div>
         {todos.map((todo)=>
             // <div className='todo-child' key={todo.id}>{todo.title}</div>
             {
             console.log('>>> Check todo list: ', todo);
             return (
-                <div className='todo-child' key={todo.id}>{todo.title}</div>
+                <li className='todo-child' key={todo.id}>{todo.title}</li>
                 )
             }
         )}
+        <hr/>
     </div>
     )
 }
