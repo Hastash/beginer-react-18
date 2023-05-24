@@ -1,12 +1,20 @@
-import logo from './logo.svg';
+
 import './App.css';
-import Nav from './views/Nav';
 import { useEffect, useState } from 'react';
 import Todo from './views/Todo';
 import Covid from './views/Covid';
 import CountDown from './views/CountDown';
+import ErrorPage from "./views/ErrorPage";
+import Layout from './views/Layout';
+import {   
+  BrowserRouter,
+  createBrowserRouter,
+  Route,
+  RouterProvider,
+  Routes,
+} from "react-router-dom";
+import Header from './views/Layout';
 const App = () => {
-  let [name, setName] = useState('Nathan');
   const [address, setAddress]=useState('');
   const [todos, setTodos]= useState([ 
   {id: 'Todo1', title:"Doing homework", type:'Nathan'},
@@ -29,7 +37,11 @@ const App = () => {
       alert('Input is empty!')
       return;
     }
-    let newTodo = {id:"abc", title: address, type:'Nathan'};
+    let newTodo = {
+      id: `'${Math.floor((Math.random() * 100000) + 1)}'`, 
+      title: address, 
+      type:'Nathan'
+    };
     //hook not merge state
     setTodos([...todos, newTodo]);
     setAddress('');
@@ -42,18 +54,37 @@ const App = () => {
     curTodos = curTodos.filter(item => item.id!==id)
     setTodos(curTodos)
   }
-  // const onTimesUp = () => {
-  //   alert('Times up')
-  // }
+  const onTimesUp = () => {
+    alert('Times up')
+  }
   return (
     <div className="App">
-      <header className="App-header">
-      <Nav />
-        <img src={logo} className="App-logo" alt="logo" />
-        {/* <CountDown onTimesUp={onTimesUp}/> */}
-        <h1>Hello {name}</h1>
-      <Covid />
-      </header>
+
+      {/* <RouterProvider router={router} />   */}
+      <BrowserRouter>
+      <Routes>
+        {/* 1️⃣ Wrap your routes in a pathless layout route */}
+        <Route element={<Layout />}>
+          <Route path="/" element={<Covid />} errorElement={<ErrorPage />}/>
+          <Route path="/timer/*" element={<CountDown onTimesUp={onTimesUp}/>} errorElement={<ErrorPage />}/>
+          <Route path="/todo/*" 
+            element={
+            <>
+              <Todo 
+              data = {todos}
+              title = {'All todos'}
+              deleteDataTodo = {deleteDataTodo}
+              />
+              <span>
+              <input type='text' value={address} onChange={(e)=>handleOnchangeInput(e)}></input>
+              <button type='button' onClick={(e)=>handleEventClick(e)}>Click me</button>
+              </span>
+            </>} 
+            errorElement={<ErrorPage />}
+          />
+        </Route>
+      </Routes>
+    </BrowserRouter>
     </div>
   );
 }

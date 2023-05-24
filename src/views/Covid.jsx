@@ -1,19 +1,19 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
 import useFetch from "../models/fetch";
-import moment from "moment";
+// import moment from "moment";
 
 const Covid = () =>{
     // Start Date
-    const today= new Date(new Date().setHours(0,0,0,0)); 
+    // const today= new Date(new Date().setHours(0,0,0,0)); 
+    // const today= moment().startOf('day');
 
-    // End Date
-    const priorDate = moment().subtract(30,'days');
+    // // End Date
+    // const priorDate = moment().subtract(30,'days');
 
     // How to convert to ISOString: `...${priorDate.toISOString()}...${today.toISOString()}`
     const{users, loading: isLoading, isError} = useFetch("https://reqres.in/api/users?page=2")
    
     return(   
+    <div>
     <table id="customers">
         <thead>
             <tr>
@@ -49,6 +49,7 @@ const Covid = () =>{
             )}
         </tbody>
     </table>
+    </div>
     )
 }
 export default Covid;

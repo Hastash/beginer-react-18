@@ -1,7 +1,8 @@
 import React, {useState, useEffect}from 'react';
+import { memo } from 'react';
 const CountDown = (props) => {
     const [count, setCount] = useState(10);
-  
+
     useEffect(() => {
         if(count===0){
             props.onTimesUp();
@@ -20,4 +21,4 @@ const CountDown = (props) => {
         <div>{count}</div>
     )
   }
-export default CountDown;
+export default memo(CountDown);

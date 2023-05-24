@@ -27,7 +27,7 @@ const useFetch = (url) => {
    
     useEffect(() => {
         fetchData();
-    });  
+    },[url]);  
 
     return {
         users, loading, isError
