@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 const useFetch = (url) => {
-    const [users, setUsers] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
     // let isMounted = true; //Handle race condition
     useEffect(() => {
@@ -12,20 +12,21 @@ const useFetch = (url) => {
           const response = await axios.get(url,{
             cancelToken: selfRequest.token, // <-- 2nd Step
           });
-          const data = response?.data?.data || [];
+          let data = (response && response.data) ? response.data : [];
           // Simulate delay using setTimeout
             // if(isMounted){
-                setUsers(data);
-                setLoading(true);
+                setData(data);
+                setIsLoading(true);
                 setIsError(false);
             // }
         } catch (error) {
             if(axios.isCancel(error)){
+                //Handle Abort
                 console.log('Request canceled', error.message)
             } else {
                 //Handle error
                 setIsError(true);
-                setLoading(false);
+                setIsLoading(false);
             }
         }
     }
@@ -42,7 +43,7 @@ const useFetch = (url) => {
 
 
     return {
-        users, loading, isError
+        data, isLoading, isError
     }
 }
 export default useFetch;

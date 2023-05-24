@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 let controller;
 
 const useFetch = (url) => {
-    const [users, setUsers] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
 
     useEffect(() => {
@@ -14,11 +14,12 @@ const useFetch = (url) => {
         try {
             const res = await fetch(url,{ signal })
             const response = await res.json()
-            const data = response?.data || [];
-            // console.log('Check data: ', data)
+            // const data = response?.data || [];
+            let data = (response && response.data) ? response.data : [];
+            console.log('Check data: ', data)
             // Simulate delay using setTimeout
-            setUsers(data);
-            setLoading(true);
+            setData(data);
+            setIsLoading(true);
             setIsError(false);
 
         } catch (error) {
@@ -26,9 +27,9 @@ const useFetch = (url) => {
                 //Handle Abort
                 console.log('Request canceled');
             } else {
-                //Handle error
+                //Handle Error
                 setIsError(true);
-                setLoading(false);
+                setIsLoading(false);
             }
         }
     }
@@ -45,7 +46,7 @@ const useFetch = (url) => {
 
 
     return {
-        users, loading, isError
+        data, isLoading, isError
     }
 }
 export default useFetch;

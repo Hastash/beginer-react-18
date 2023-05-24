@@ -11,7 +11,7 @@ const Covid = () =>{
     // const priorDate = moment().subtract(30,'days');
 
     // How to convert to ISOString: `...${priorDate.toISOString()}...${today.toISOString()}`
-    const{users, loading: isLoading, isError} = useFetch("https://reqres.in/api/users?page=2")
+    const{data: users, isLoading, isError} = useFetch("https://reqres.in/api/users?page=2")
    
     return(   
     <div>

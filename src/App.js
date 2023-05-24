@@ -6,6 +6,7 @@ import Covid from './views/Covid';
 import CountDown from './views/CountDown';
 import ErrorPage from "./views/ErrorPage";
 import Layout from './views/Layout';
+import Blog from './views/Blog';
 import {   
   BrowserRouter,
   createBrowserRouter,
@@ -82,6 +83,7 @@ const App = () => {
             </>} 
             errorElement={<ErrorPage />}
           />
+          <Route path="/blog/*" element={<Blog />} errorElement={<ErrorPage />}/>
         </Route>
       </Routes>
     </BrowserRouter>
