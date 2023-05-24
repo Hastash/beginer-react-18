@@ -1,4 +1,5 @@
-import useFetch from "../models/fetch";
+// import useFetch from "../models/fetch";
+import useFetch from "../models/fetchHTTP";
 // import moment from "moment";
 
 const Covid = () =>{
