@@ -8,7 +8,7 @@ const AddNewBlog =() => {
         console.log('Check: ',title,'---',content)
     }
     return(
-        <div className = "add-new-container">
+        <form className = "add-new-container">
             <div className="text-add-new">---Add new Blog---</div>
             <div className="inputs-data">
                 <label>Title:</label>
@@ -19,7 +19,7 @@ const AddNewBlog =() => {
                 <input type="text" value={content} onChange={(e)=>{setContent(e.target.value)}}/>
             </div>
             <button onClick={(e)=>{handleSubmit()}}>Submit</button>
-        </div>
+        </form>
     )
 }
 export default AddNewBlog;

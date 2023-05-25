@@ -1,4 +1,3 @@
-
 import './App.css';
 import { useEffect, useState } from 'react';
 import Todo from './views/Todo';
@@ -85,8 +84,8 @@ const App = () => {
             </>} 
             errorElement={<ErrorPage />}
           />
-          <Route path="/blog/*" element={<Blog />} errorElement={<ErrorPage />} exact />
-          <Route path="/blog/:id*" element={<DetailBlog />} errorElement={<ErrorPage />} exact />
+          <Route path="/blog/" element={<Blog />} errorElement={<ErrorPage />} exact />
+          <Route path="/blog/:id" element={<DetailBlog />} errorElement={<ErrorPage />} exact />
           <Route path="/add-new-blog" element={<AddNewBlog />} errorElement={<ErrorPage />} exact />
 
         </Route>
