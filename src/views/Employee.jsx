@@ -2,7 +2,7 @@
 import useFetch from "../models/fetchHTTP";
 // import moment from "moment";
 
-const Covid = () =>{
+const Employee = () =>{
     // Start Date
     // const today= new Date(new Date().setHours(0,0,0,0)); 
     // const today= moment().startOf('day');
@@ -53,4 +53,4 @@ const Covid = () =>{
     </div>
     )
 }
-export default Covid;
+export default Employee;

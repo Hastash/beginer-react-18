@@ -2,7 +2,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import Todo from './views/Todo';
-import Covid from './views/Covid';
+import Employee from './views/Employee';
 import CountDown from './views/CountDown';
 import ErrorPage from "./views/ErrorPage";
 import Layout from './views/Layout';
@@ -66,7 +66,7 @@ const App = () => {
       <Routes>
         {/* 1️⃣ Wrap your routes in a pathless layout route */}
         <Route element={<Layout />}>
-          <Route path="/" element={<Covid />} errorElement={<ErrorPage />}/>
+          <Route path="/" element={<Employee />} errorElement={<ErrorPage />}/>
           <Route path="/timer/*" element={<CountDown onTimesUp={onTimesUp}/>} errorElement={<ErrorPage />}/>
           <Route path="/todo/*" 
             element={
