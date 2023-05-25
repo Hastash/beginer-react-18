@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 // Create an instance.
-let controller;
 
 const useFetch = (url) => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
+    let controller;
 
     useEffect(() => {
         controller = new AbortController()
@@ -16,7 +16,7 @@ const useFetch = (url) => {
             const response = await res.json()
             // const data = response?.data || [];
             let data = (response && response.data) ? response.data : [];
-            console.log('Check data: ', data)
+            console.log('Check data 1: ', data)
             // Simulate delay using setTimeout
             setData(data);
             setIsLoading(true);
@@ -33,9 +33,9 @@ const useFetch = (url) => {
             }
         }
     }
-        fetchData();
+        // fetchData();
         // Delay Fetch in Real Environment
-        // setTimeout(() => {fetchData();}, 3000)
+        setTimeout(() => {fetchData();}, 3000)
 
         return () => {
             controller.abort();
