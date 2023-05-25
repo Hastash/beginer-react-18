@@ -9,7 +9,7 @@ const useFetch = (url) => {
         const selfRequest = axios.CancelToken.source()// <-- 1st Step
         const fetchData = async () => {
         try {
-          const response = await axios.get(url,{
+          let response = await axios.get(url,{
             cancelToken: selfRequest.token, // <-- 2nd Step
           });
           let data = (response && response.data) ? response.data : [];
@@ -31,7 +31,10 @@ const useFetch = (url) => {
         }
     }
         // Delay Fetch
-        setTimeout(() => {fetchData();}, 3000)
+        setTimeout(() => {
+            fetchData();
+        }, 3000)
+        
         return () => {
             selfRequest.cancel('Operation canceled by the user.') // <-- 3rd step
         }
