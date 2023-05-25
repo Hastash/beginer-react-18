@@ -1,5 +1,5 @@
 import "./css/Blog.css"
-import useFetch from "../models/fetch"
+import useFetch from "../models/fetchHTTP"
 import { useEffect, useState } from "react";
 const Blog = () => {
     const [show, setShow] = useState(false);

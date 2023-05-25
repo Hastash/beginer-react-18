@@ -15,7 +15,7 @@ const useFetch = (url) => {
             const res = await fetch(url,{ signal })
             const response = await res.json()
             // const data = response?.data || [];
-            let data = (response && response.data) ? response.data : [];
+            let data = response ? response : [];
             console.log('Check data 1: ', data)
             // Simulate delay using setTimeout
             setData(data);

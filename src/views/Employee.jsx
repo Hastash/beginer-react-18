@@ -7,12 +7,12 @@ const Employee = () =>{
     // const today= new Date(new Date().setHours(0,0,0,0)); 
     // const today= moment().startOf('day');
 
-    // // End Date
+    // // End Dat
     // const priorDate = moment().subtract(30,'days');
 
     // How to convert to ISOString: `...${priorDate.toISOString()}...${today.toISOString()}`
-    const{data: users, isLoading, isError} = useFetch("https://reqres.in/api/users?page=2")
-   
+    const{data: usersList, isLoading, isError} = useFetch("https://reqres.in/api/users?page=2")
+    const  users = usersList.data;
     return(   
     <div>
     <table id="customers">
@@ -26,7 +26,7 @@ const Employee = () =>{
         <tbody>
             {isLoading ? ( 
                 users && users.length > 0 ? ( 
-                users.map((item) => (
+                    users.map((item) => (
                     <tr key={item.id}>
                         <td>{item.first_name}</td>
                         <td>{item.last_name}</td>
