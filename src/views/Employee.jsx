@@ -1,5 +1,5 @@
 // import useFetch from "../models/fetch";
-import useFetch from "../models/fetchHTTP";
+import useFetch from "../model/fetchHTTP";
 // import moment from "moment";
 
 const Employee = () =>{
@@ -24,7 +24,7 @@ const Employee = () =>{
             </tr>
         </thead>
         <tbody>
-            {isLoading ? ( 
+            {!isLoading ? ( 
                 users && users.length > 0 ? ( 
                     users.map((item) => (
                     <tr key={item.id}>

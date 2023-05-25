@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 const useFetch = (url) => {
     const [data, setData] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
     let controller;
 
@@ -19,7 +19,7 @@ const useFetch = (url) => {
             console.log('Check data 1: ', data)
             // Simulate delay using setTimeout
             setData(data);
-            setIsLoading(true);
+            setIsLoading(false);
             setIsError(false);
 
         } catch (error) {

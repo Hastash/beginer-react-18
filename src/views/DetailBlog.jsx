@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router";
-import useFetch from "../models/fetch";
+import useFetch from "../model/fetch";
 const DetailBlog =() => {
     let navigate = useNavigate()
     let {id} = useParams()

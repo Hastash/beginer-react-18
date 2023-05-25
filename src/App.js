@@ -8,6 +8,7 @@ import ErrorPage from "./views/ErrorPage";
 import Layout from './views/Layout';
 import Blog from './views/Blog';
 import DetailBlog from './views/DetailBlog';
+import AddNewBlog from './views/AddNewBlog';
 import {   
   BrowserRouter,
   createBrowserRouter,
@@ -86,6 +87,7 @@ const App = () => {
           />
           <Route path="/blog/*" element={<Blog />} errorElement={<ErrorPage />} exact />
           <Route path="/blog/:id*" element={<DetailBlog />} errorElement={<ErrorPage />} exact />
+          <Route path="/add-new-blog" element={<AddNewBlog />} errorElement={<ErrorPage />} exact />
 
         </Route>
       </Routes>
