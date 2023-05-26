@@ -34,11 +34,11 @@ const Blog = () => {
     return (
         <>
         {/* <button className="btn btn-primary" onClick={handleModalOpen}>Open Modal</button> */}
-        <button className="w3-button w3-green w3-large" onClick={handleModalOpen}>Open Modal</button>
+        <button className="w3-button w3-green w3-large w3-margin" onClick={handleModalOpen}>Open Modal</button>
         <div className={`w3-modal ${modalVisible ? 'w3-show' : 'w3-hide'}`}>
             <div class="w3-modal-content w3-card-4 w3-animate-zoom" style={{'max-width':'600px'}}>
             <span onClick={handleModalClose} class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
-                <AddNewBlog handleAddNew={handleAddNew}/>
+                <AddNewBlog handleAddNew={handleAddNew} />
             </div>
         </div>
 
