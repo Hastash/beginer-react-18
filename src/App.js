@@ -67,8 +67,8 @@ const App = () => {
       <Routes>
         {/* 1️⃣ Wrap your routes in a pathless layout route */}
         <Route element={<Layout />}>
-          <Route path="/" element={<Employee />} errorElement={<ErrorPage />}/>
-          <Route path="/timer/*" element={<CountDown onTimesUp={onTimesUp}/>} errorElement={<ErrorPage />}/>
+          <Route path="/" element={<Employee />} />
+          <Route path="/timer/*" element={<CountDown onTimesUp={onTimesUp}/>} />
           <Route path="/todo/*" 
             element={
             <>
@@ -84,9 +84,10 @@ const App = () => {
             </>} 
             errorElement={<ErrorPage />}
           />
-          <Route path="/blog/" element={<Blog />} errorElement={<ErrorPage />} exact />
-          <Route path="/blog/:id" element={<DetailBlog />} errorElement={<ErrorPage />} exact />
-          <Route path="/add-new-blog" element={<AddNewBlog />} errorElement={<ErrorPage />} exact />
+          <Route path="/blog/" element={<Blog />}  exact />
+          <Route path="/blog/:id" element={<DetailBlog />}  exact />
+          <Route path="/add-new-blog" element={<AddNewBlog />}  exact />
+          <Route path="*" element={<ErrorPage />} />
 
         </Route>
       </Routes>
