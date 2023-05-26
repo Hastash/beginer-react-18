@@ -8,7 +8,7 @@ const useFetch = (url) => {
     let controller;
 
     useEffect(() => {
-        controller = new AbortController()
+        controller = new AbortController();
         let signal = controller.signal;
         const fetchData = async () => {
         try {
@@ -16,7 +16,7 @@ const useFetch = (url) => {
             const response = await res.json()
             // const data = response?.data || [];
             let data = response ? response : [];
-            console.log('Check data 1: ', data)
+            // console.log('Check data 1: ', data)
             // Simulate delay using setTimeout
             setData(data);
             setIsLoading(false);
@@ -33,9 +33,9 @@ const useFetch = (url) => {
             }
         }
     }
-        // fetchData();
+        fetchData();
         // Delay Fetch in Real Environment
-        setTimeout(() => {fetchData();}, 3000)
+        // setTimeout(() => {fetchData();}, 3000)
 
         return () => {
             controller.abort();

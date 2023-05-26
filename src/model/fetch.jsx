@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 const useFetch = (url) => {
     const [data, setData] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
     // let isMounted = true; //Handle race condition
     useEffect(() => {
@@ -16,7 +16,7 @@ const useFetch = (url) => {
           // Simulate delay using setTimeout
             // if(isMounted){
                 setData(data);
-                setIsLoading(true);
+                setIsLoading(false);
                 setIsError(false);
             // }
         } catch (error) {

@@ -17,9 +17,15 @@ const AddNewBlog =(props) => {
         let data = {
             title: title,
             body: content,
-            userId: 1,
+            userId: `'${Math.floor((Math.random() * 100) + 1)}'`
         }
-        let res = await axios.post('https://jsonplaceholder.typicode.com/posts', data);
+        // let res = await axios.post('https://jsonplaceholder.typicode.com/posts', data);
+        // if (res && res.data) {
+        //     let newBlog = res.data;
+        //     setTitle('');
+        //     setContent('')
+        //     props.handleAddNew(newBlog);
+        // }
         let response = await fetch('https://jsonplaceholder.typicode.com/posts', 
         {
             method: 'POST',
@@ -31,8 +37,10 @@ const AddNewBlog =(props) => {
         const newData = await response.json()
         console.log('CHeck newData: ',newData);
 
-        if (res && res.data) {
-            let newBlog = res.data;
+        if (newData) {
+            let newBlog = newData;
+            setTitle('');
+            setContent('')
             props.handleAddNew(newBlog);
         }
     }
@@ -40,13 +48,13 @@ const AddNewBlog =(props) => {
     return(
         <form className = "w3-container" >
             <div className="w3-section">---Add new Blog---</div>
-            <div className="w3-section">
+            <div className="w3-section w3-left-align">
                 <label><b>Title:</b></label>
-                <input class="w3-input w3-border" type="text" value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
+                <input className="w3-input w3-border w3-margin-bottom" type="text" value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
                 <label><b>Content:</b></label>
-                <input class="w3-input w3-border" type="text" value={content} onChange={(e)=>{setContent(e.target.value)}}/>
+                <input className="w3-input w3-border w3-margin-bottom" type="text" value={content} onChange={(e)=>{setContent(e.target.value)}}/>
             </div>
-            <div class="w3-container w3-border-top w3-padding-16">
+            <div className="w3-container w3-border-top w3-padding-16">
                 <button type="button" onClick={handleSubmitBtn}>Submit</button>
             </div>
         </form>

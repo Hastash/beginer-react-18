@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router";
-import useFetch from "../model/fetch";
+import useFetch from "../model/fetchHTTP";
 const DetailBlog =() => {
     let navigate = useNavigate()
     let {id} = useParams()
@@ -14,7 +14,7 @@ const DetailBlog =() => {
         <div className="blog-detail">
             {dataBlogDetail && 
             <>
-                {!isLoading ? "Loading...." :
+                {isLoading ? "Loading...." :
                     <>   
                     <div className="title">
                         Blog ID: {id} --- {dataBlogDetail.title}</div>
