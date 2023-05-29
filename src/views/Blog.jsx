@@ -30,6 +30,11 @@ const Blog = () => {
         setNewData(data);
         handleModalClose();
     }
+    const deletePost = (id) => {
+        let data = newData;
+        data = data.filter(item => item.id !== id)
+        setNewData(data)
+    }
     return (
         <>
         {/* <button className="btn btn-primary" onClick={handleModalOpen}>Open Modal</button> */}
@@ -42,20 +47,23 @@ const Blog = () => {
         </div>
 
         {/* <div><button className="btn-add-new" onClick={()=>navigate('/add-new-blog')}>Add new Blog</button></div> */}
-        <div className="w3-row-padding w3-grayscale">
+        <div className="w3-container">
                 {isLoading === false && newData && newData.length > 0 && newData.map(item => {
                     return (
-                        <div className="w3-col l3 m6 w3-margin w3-border w3-padding" key={item.id}>
-                            <header>
-                                <span>{item.title} </span>
-                                <span>X</span>
-                            </header >
-                            <div>{item.body}</div>
-                            <footer>
-                            <button className="w3-button w3-light-grey w3-block">
-                                <Link to={`/blog/${item.id}`}>  View detail</Link>
-                            </button>
-                            </footer>
+                        <div className="w3-third w3-section w3-left-align" key={item.id}>
+                            <div className="w3-card-4  w3-border w3-padding" style={{margin: '5px'}}>
+                                <header>
+                                    <span>{item.title} </span>
+                                    <hr/>
+                                </header >
+                                <div>{item.body}</div>
+                                <footer>
+                                <button className="w3-button w3-light-grey w3-margin">
+                                    <Link to={`/blog/${item.id}`}>  View detail</Link>
+                                </button>
+                                <button onClick={()=>deletePost(item.id)} className="w3-button w3-red w3-margin">Delete</button>
+                                </footer>
+                            </div>
                         </div>
                     )
                 })}

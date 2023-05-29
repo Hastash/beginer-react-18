@@ -8,6 +8,7 @@ import Layout from './views/Layout';
 import Blog from './views/Blog';
 import DetailBlog from './views/DetailBlog';
 import AddNewBlog from './views/AddNewBlog';
+import YoutubeSearch from './views/YoutubeSearch';
 import {   
   BrowserRouter,
   createBrowserRouter,
@@ -67,9 +68,9 @@ const App = () => {
       <Routes>
         {/* 1️⃣ Wrap your routes in a pathless layout route */}
         <Route element={<Layout />}>
-          <Route path="/" element={<Employee />} />
-          <Route path="/timer/*" element={<CountDown onTimesUp={onTimesUp}/>} />
-          <Route path="/todo/*" 
+          <Route path="/" element={<Employee />} exact/>
+          <Route path="/timer" element={<CountDown onTimesUp={onTimesUp}/>} exact/>
+          <Route path="/todo" 
             element={
             <>
               <Todo 
@@ -83,10 +84,12 @@ const App = () => {
               </span>
             </>} 
             errorElement={<ErrorPage />}
+            exact
           />
           <Route path="/blog/" element={<Blog />}  exact />
           <Route path="/blog/:id" element={<DetailBlog />}  exact />
           <Route path="/add-new-blog" element={<AddNewBlog />}  exact />
+          <Route path="/search" element={<YoutubeSearch />}  exact />
           <Route path="*" element={<ErrorPage />} />
 
         </Route>
